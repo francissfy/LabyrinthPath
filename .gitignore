@@ -1,0 +1,6 @@
+*.xcodeproj/
+
+*.pbxproj
+*.plist
+MF_ZMT.xcodeproj/project.pbxproj
+MF_ZMT.xcodeproj/xcuserdata/francis.xcuserdatad/xcschemes/xcschememanagement.plist

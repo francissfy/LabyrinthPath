@@ -7,9 +7,33 @@
 //
 
 #include <iostream>
+#include <vector>
+
+#include "container.hpp"
+#include "utils.hpp"
+
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    if (argc != 2) {
+        fprintf(stderr, "ERROR: please provide exactly one option among -Stack, -Queue!\n");
+        exit(-1);
+    } else if (strcmp(argv[1], "-Stack") == 0) {
+        std::vector<MAP_T> map_array = ParseMap();
+        for (MAP_T& map: map_array) {
+            DFS(map);
+            TraceBack(map); // print out answer
+            PrintTraceVerbose(map); // visualize the path, for debugging's ease
+        }
+    } else if (strcmp(argv[1], "-Queue") == 0) {
+        std::vector<MAP_T> map_array = ParseMap();
+        for (MAP_T& map: map_array) {
+            BFS(map);
+            TraceBack(map);
+            PrintTraceVerbose(map);
+        }
+    } else {
+        fprintf(stderr, "ERROR: please provide exactly one option among -Stack, -Queue!\n");
+        exit(-1);
+    }
     return 0;
 }
